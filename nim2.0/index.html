@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nim Game</title>
+    <!-- Icon:
+    <link rel="shortcut icon" href="_images/icons/scientiaicon.png">-->
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400|Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+
+<!-- LOGIN DIV -->
+
+<div id="login" style="visibility: visible">
+    <div id="form">
+        <img id="icon" src="images/icon.png">
+        <input type="text" name="username" placeholder="Username" maxlength="20">
+        <input type="password" name="password" placeholder="Password" maxlength="20">
+        <br/>
+        <button onclick="hideDiv(0)">Login</button>
+        <button onclick="comingSoon()">Register</button>
+    </div>
+</div>
+
+<div id="body-container">
+
+    <!-- MENU DIV -->
+    <div id="menu">
+        <img src="images/icon.png" onclick="hideAll()" style="cursor: pointer; z-index: 1">
+        <ul id="menu-itens">
+            <li onclick="showDiv(1)">Classificações</li>
+            <li onclick="showDiv(2)">Instruções</li>
+            <li onclick="showDiv(3)">Configuração</li>
+        </ul>
+    </div>
+
+    <!-- OTHERS DIVS -->
+
+    <div id="wrapper">
+
+        <div id="play-area">
+            <button id="play-button" type="button" onclick="iniciar()">Click to play</button>
+        </div>
+
+        <div style="text-align: center; top: 30px;" id="divDesistir">
+            <button class="buttons-options" onclick="desistir()">Desistir</button>
+        </div>
+
+
+
+        <div id="classificacoes" style="visibility: hidden">
+            <!--<img class="x-button" src="images/x-button.png" onclick="hideDiv(1)"/>-->
+            <h1>Classificacões</h1>
+            <table>
+                <tr>
+                    <th>Vs.</th>
+                    <th>Tamanho</th>
+                    <th>Vitorias</th>
+                    <th>Derrotas</th>
+                </tr>
+                <tr>
+                    <td>IA</td>
+                    <td>5</td>
+                    <td id="vicTam5" class="green">0</td>
+                    <td id="derrTam5" class="red">0</td>
+                </tr>
+                <tr>
+                    <td>IA</td>
+                    <td>6</td>
+                    <td id="vicTam6" class="green">0</td>
+                    <td id="derrTam6" class="red">0</td>
+                </tr>
+                <tr>
+                    <td>IA</td>
+                    <td>7</td>
+                    <td id="vicTam7" class="green">0</td>
+                    <td id="derrTam7" class="red">0</td>
+                </tr>
+            </table>
+
+            <div style="text-align: center">
+                <button class="buttons-options" onclick="hideDiv(1)">Aceitar</button>
+                <button class="buttons-options" onclick="resetPoints()">Reset</button>
+            </div>
+        </div>
+
+        <div id="instrucoes" style="visibility: hidden">
+            <!--<img class="x-button" src="images/x-button.png" onclick="hideDiv(2)"/>-->
+            <h1>Instruções</h1>
+            <p>O Nim é um jogo matemático de estratégia em que dois jogadores alternadamente removem objetos (contas, grãos, fosforos) de diferentes pilhas. A cada jogada, o jogador deve remover pelo menos um objeto de um pilha e todos os objetos removidos devem pertencer à mesma pilha. O objetivo do jogo é remover o último objeto. (Alternativamente, o objetivo pode ser evitar tirar o último objeto - "à lá misére").</p>
+            <div style="text-align: center">
+                <button class="buttons-options" onclick="hideDiv(2)">Aceitar</button>
+            </div>
+        </div>
+
+        <div id="configuracao" style="visibility: hidden;">
+            <!--<img class="x-button" src="images/x-button.png" onclick="hideDiv(3)"/>-->
+            <h1>Configuração</h1>
+            <div id="choice-size">
+                <p>Tamanho:</p>
+                <button type="button" id="cs5" onclick="getSize(5)" class="selected">5</button><button type="button" id="cs6" onclick="getSize(6)" class="non-selected">6</button><button type="button" id="cs7" onclick="getSize(7)" class="non-selected">7</button><button type="button" style="width: 200px; background-color: rgba(2,65,98,0.5); color: #fff">More sizes coming soon...</button>
+            </div>
+            <div id="vs">
+                <p>Oponente:</p>
+                <button type="button" onclick="getVs('ia')" id="vsIa" class="selected">IA</button><button type="button" onclick="comingSoon()" id="vsJogador" class="non-selected">Jogador 2</button>
+            </div>
+            <div id="comeca-jogar">
+                <p>Primeiro a jogar:</p>
+                <button type="button" onclick="getFirst(1)" id="comecaS" class="selected">Sim</button><button type="button" onclick="getFirst(2)" id="comecaN" class="non-selected">Não</button>
+            </div>
+            <div id="choice-level">
+                <p>Nível:</p>
+                <button type="button" onclick="getLevel(1)" id="cl1" class="selected">Facil</button><button type="button" onclick="getLevel(2)" id="cl2" class="non-selected">Dificil</button>
+            </div>
+
+            <div style="text-align: center">
+                <button class="buttons-options" onclick="refresh()">Aceitar</button>
+                <button class="buttons-options" onclick="resetPred()">Reset</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="nim.js"></script>
+
+</body>
+</html>
